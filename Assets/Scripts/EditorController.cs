@@ -30,7 +30,7 @@ public class EditorController : MonoBehaviour
 
     public Action<int> GridSnapListener;
 
-    GameObject selectedNoteObject;
+    public GameObject selectedNoteObject;
     Vector3 selectedGridPosition;
     Vector3 lastSelectedGridPosition;
     Transform headTemp;
