@@ -15,7 +15,7 @@ public class Editor : MonoBehaviour
         }
     }
 
-    UISilder slider = null;
+    UISlider slider = null;
     UIButton musicController = null;
     UIText timer = null;
 
@@ -44,7 +44,7 @@ public class Editor : MonoBehaviour
     float speed;
     public void Init()
     {
-        slider = UIController.Instance.GetUI("UI_E_ProgressBar").uiObject as UISilder;
+        slider = UIController.Instance.GetUI("UI_E_ProgressBar").uiObject as UISlider;
         musicController = UIController.Instance.GetUI("UI_E_Play").uiObject as UIButton;
         timer = UIController.Instance.GetUI("UI_E_Time").uiObject as UIText;
 
@@ -96,7 +96,7 @@ public class Editor : MonoBehaviour
         musicController.SetText(">");
     }
 
-    public void CaculateCurrnetBar()
+    public void CalculateCurrentBar()
     {
         currentBar = (int)(AudioManager.Instance.progressTime * 1000 / GameManager.Instance.sheets[GameManager.Instance.title].BarPerMilliSec);
     }
@@ -106,7 +106,7 @@ public class Editor : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(0.1f);
         while (true)
         {
-            CaculateCurrnetBar();
+            CalculateCurrentBar();
             yield return wait;
         }
     }
@@ -139,14 +139,14 @@ public class Editor : MonoBehaviour
             float time = AudioManager.Instance.Length * slider.slider.value;
             AudioManager.Instance.progressTime = time;
 
-            // À½¾Ç Å¸ÀÓ¿¡ ¸ÂÃç¼­ ¿ÀºêÁ§Æ®½º ÀÌµ¿
-            // ÇÑ¸¶µğ¿¡ 16¾¿ ÀÌµ¿
-            // time / ÇÑ¸¶µğ ½Ã°£
+            // ìŒì•… íƒ€ì„ì— ë§ì¶°ì„œ ì˜¤ë¸Œì íŠ¸ìŠ¤ ì´ë™
+            // í•œë§ˆë””ì— 16ì”© ì´ë™
+            // time / í•œë§ˆë”” ì‹œê°„
 
-            CaculateCurrnetBar();
+            CalculateCurrentBar();
 
-            // ÇÑ ±×¸®µå(ÇÑ ¸¶µğ)ÀÇ °ÔÀÓ¿ÀºêÁ§Æ® yÁÂÇ¥ÀÇ ³ôÀÌ´Â 16
-            // ÇöÀç À½¾ÇÀ§Ä¡ * 16 = ³ôÀÌs
+            // í•œ ê·¸ë¦¬ë“œ(í•œ ë§ˆë””)ì˜ ê²Œì„ì˜¤ë¸Œì íŠ¸ yì¢Œí‘œì˜ ë†’ì´ëŠ” 16
+            // í˜„ì¬ ìŒì•…ìœ„ì¹˜ * 16 = ë†’ì´s
             float barPerTime = GameManager.Instance.sheets[GameManager.Instance.title].BarPerSec;
             float pos = time / barPerTime * 16;
 
@@ -175,6 +175,6 @@ public class Editor : MonoBehaviour
 
     public void FileSave()
     {
-        FindObjectOfType<SheetStorage>().Save();
+        FindObjectOfType<SheetStorage>()?.Save();
     }
 }

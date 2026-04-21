@@ -33,6 +33,8 @@ public class Judgement : MonoBehaviour
 
     public void Init()
     {
+        longNoteCheck = new int[4] { 0, 0, 0, 0 };
+
         foreach (var note in notes)
         {
             note.Clear();

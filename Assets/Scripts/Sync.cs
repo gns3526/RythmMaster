@@ -35,7 +35,11 @@ public class Sync : MonoBehaviour
             txt = $"{time} ms FAST";
 
         text.SetText(txt);
-        text.GetComponent<RectTransform>().anchoredPosition3D += Vector3.down * 2.5f;
+        float yOffset = judgement.judgeTimeFromUserSetting * 0.1f;
+        text.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(
+            text.GetComponent<RectTransform>().anchoredPosition3D.x,
+            yOffset,
+            text.GetComponent<RectTransform>().anchoredPosition3D.z);
 
         if (coPopup != null)
             StopCoroutine(coPopup);
@@ -57,7 +61,11 @@ public class Sync : MonoBehaviour
             txt = $"{time} ms FAST";
 
         text.SetText(txt);
-        text.GetComponent<RectTransform>().anchoredPosition3D += Vector3.up * 2.5f;
+        float yOffset = judgement.judgeTimeFromUserSetting * 0.1f;
+        text.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(
+            text.GetComponent<RectTransform>().anchoredPosition3D.x,
+            yOffset,
+            text.GetComponent<RectTransform>().anchoredPosition3D.z);
 
         if (coPopup != null)
             StopCoroutine(coPopup);
