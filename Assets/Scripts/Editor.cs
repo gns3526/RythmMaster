@@ -73,14 +73,14 @@ public class Editor : MonoBehaviour
         if (AudioManager.Instance.IsPlaying())
         {
             AudioManager.Instance.Pause();
-            musicController.SetText(">");
+            musicController?.SetText(">");
             if (coMove != null)
                 StopCoroutine(coMove);
         }
         else
         {
             AudioManager.Instance.Play();
-            musicController.SetText("||");
+            musicController?.SetText("||");
             coMove = StartCoroutine(IEMove());
         }
     }
@@ -93,7 +93,7 @@ public class Editor : MonoBehaviour
         objects.transform.position = new Vector3(0f, offsetPosition, 0f);
         AudioManager.Instance.progressTime = 0f;        
         AudioManager.Instance.Stop();
-        musicController.SetText(">");
+        musicController?.SetText(">");
     }
 
     public void CalculateCurrentBar()
