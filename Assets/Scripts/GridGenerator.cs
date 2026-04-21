@@ -18,7 +18,7 @@ public class GridGenerator : MonoBehaviour
         if (gridList.Count < barCount)
         {
             int failCount = barCount - gridList.Count;
-            for (int i = gridList.Count; i < failCount; i++)
+            for (int i = 0; i < failCount; i++)
             {
                 GameObject obj = Instantiate(grid, transform);
                 obj.SetActive(false);

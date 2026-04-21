@@ -32,7 +32,7 @@ public class SheetLoader : MonoBehaviour
         if (Directory.Exists(pathSheet))
         {
             DirectoryInfo d = new DirectoryInfo(pathSheet);
-            sheetCount = remain = d.GetFiles().Length;
+            sheetCount = remain = d.GetDirectories().Length;
         }
 
         StartCoroutine(IELoad());
